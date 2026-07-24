@@ -9,7 +9,6 @@ interface Props {
   keywords?: string;
   schema?: string;
   ogImage?: string;
-  canonicalPath?: string;
 }
 
 const { 
@@ -18,11 +17,18 @@ const {
   keywords = "sign boards, 3d signs, glow signs, flex printing, acrylic boards, sign board makers Chandigarh, sign board Mohali, flex printing Kharar, glow sign Zirakpur, 3d sign Panchkula, sign board Kurali",
   schema,
   ogImage = "/images/glow_sign.png",
-  canonicalPath
 } = Astro.props;
 
-const siteUrl = "https://3dsign.in";
-const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : `${siteUrl}${Astro.url.pathname}`;
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : "https://3dsign.in";
+
+// Sitemap outputs URLs with trailing slashes. 
+// To ensure Screaming Frog doesn't complain about "Canonicalized" non-indexable URLs,
+// we ensure the canonicalUrl always matches the sitemap exactly (with a trailing slash unless it's the root).
+let rawPath = Astro.url.pathname;
+if (!rawPath.endsWith('/') && rawPath !== '/') {
+  rawPath += '/';
+}
+const canonicalUrl = `${siteUrl}${rawPath}`;
 const fullTitle = `${title} | Classic Printing - Sign Board Makers in Chandigarh Tricity`;
 ---
 
