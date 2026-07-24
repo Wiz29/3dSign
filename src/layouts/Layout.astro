@@ -1,0 +1,82 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  schema?: string;
+  ogImage?: string;
+  canonicalPath?: string;
+}
+
+const { 
+  title, 
+  description = "Classic Printing - Premium Sign Boards, 3D Signs, Glow Signs, Flex Printing & Acrylic Boards in Chandigarh, Mohali, Kharar, Kurali, Zirakpur, and Panchkula.",
+  keywords = "sign boards, 3d signs, glow signs, flex printing, acrylic boards, sign board makers Chandigarh, sign board Mohali, flex printing Kharar, glow sign Zirakpur, 3d sign Panchkula, sign board Kurali",
+  schema,
+  ogImage = "/images/glow_sign.png",
+  canonicalPath
+} = Astro.props;
+
+const siteUrl = "https://3dsign.in";
+const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : `${siteUrl}${Astro.url.pathname}`;
+const fullTitle = `${title} | Classic Printing - Sign Board Makers in Chandigarh Tricity`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Primary SEO */}
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    {/* Geo SEO */}
+    <meta name="geo.region" content="IN-CH" />
+    <meta name="geo.placename" content="Chandigarh" />
+    <meta name="geo.position" content="30.7333;76.7794" />
+    <meta name="ICBM" content="30.7333, 76.7794" />
+
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Classic Printing" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    {/* AI / AEO Hints */}
+    <meta name="subject" content="Sign Board Manufacturing and Printing Services in Chandigarh Tricity" />
+    <meta name="topic" content="Sign Boards, 3D Signs, Glow Signs, Flex Printing, Acrylic Boards" />
+    <meta name="summary" content={description} />
+    <meta name="classification" content="Business" />
+    <meta name="coverage" content="Chandigarh, Mohali, Kharar, Kurali, Zirakpur, Panchkula" />
+
+    {/* Structured Data */}
+    {schema && <script type="application/ld+json" set:html={schema} />}
+  </head>
+  <body class="halftone-bg min-h-screen flex flex-col">
+		<Header />
+		<main class="flex-grow">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

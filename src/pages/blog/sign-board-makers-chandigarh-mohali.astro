@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const articleSchema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Sign Board Makers in Chandigarh & Mohali",
+    "author": { "@type": "Organization", "name": "Classic Printing" },
+    "publisher": { "@type": "Organization", "name": "Classic Printing" },
+    "datePublished": "2026-07-24"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://3dsign.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://3dsign.in/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Best Sign Board Makers in Chandigarh & Mohali" }
+    ]
+  }
+]);
+---
+
+<Layout 
+  title="Best Sign Board Makers in Chandigarh & Mohali"
+  description="Looking for the best sign board makers in Chandigarh and Mohali? Classic Printing offers premium glow signs and 3D letters for your business. Call 7976169388!"
+  schema={articleSchema}
+  canonicalPath="/blog/sign-board-makers-chandigarh-mohali"
+>
+  {/* Hero Section */}
+  <section class="bg-[var(--color-light-surface)] pt-32 pb-20 border-b border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6">
+        Best Sign Board Makers in <span class="text-neon-pink text-glow-pink animate-flicker-pink">Chandigarh & Mohali</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-10">
+        Transform your storefront with premium glow signs and 3D letters. We are the top choice for businesses in the Tricity area.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button href="tel:7976169388" variant="blue-solid">Call Now: 7976169388</Button>
+        <Button href="/contact" variant="secondary">Request a Quote</Button>
+      </div>
+    </div>
+  </section>
+
+  {/* Content */}
+  <section class="py-20 max-w-4xl mx-auto px-4">
+    <div class="prose prose-lg text-gray-600">
+      <p>
+        In the bustling markets of <strong>Chandigarh and Mohali</strong>, standing out is essential for any business. Whether you own a retail store in Sector 17 or a tech office in Phase 8 Industrial Area, your signage is your first impression. At Classic Printing, we pride ourselves on being the best sign board makers in the region.
+      </p>
+      <h2>Why Glow Signs Work in the Tricity</h2>
+      <p>
+        With the vibrant nightlife and late-evening shopping culture in Chandigarh and Mohali, having a brightly lit LED glow sign ensures your brand is visible 24/7. Our custom-designed glow boards are energy-efficient, weather-resistant, and visually striking.
+      </p>
+      <h2>Expert Craftsmanship</h2>
+      <p>
+        We handle everything from design to manufacturing and installation. If your business is located anywhere in Chandigarh, Mohali, or the surrounding areas, we bring our expertise directly to your doorstep.
+      </p>
+      <p>
+        Ready to upgrade your brand's visibility? Give us a call today!
+      </p>
+    </div>
+  </section>
+</Layout>

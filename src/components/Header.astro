@@ -1,0 +1,63 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Catalog', href: '/catalog' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact Us', href: '/contact' },
+];
+---
+
+<header class="fixed w-full z-50 bg-[var(--color-light-bg)]/90 backdrop-blur-md border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <div class="flex-shrink-0">
+        <a href="/" class="text-2xl font-heading font-bold text-gray-900 text-glow animate-flicker">
+          Classic<span class="text-neon-pink text-glow-pink animate-flicker-pink">Printing</span>
+        </a>
+      </div>
+      <nav class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-600 hover:text-neon-blue hover:text-glow transition-all duration-300 font-medium text-sm uppercase tracking-wider"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-btn" class="text-gray-900 hover:text-neon-blue focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  {/* Mobile Menu */}
+  <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-light-bg)] border-b border-gray-200">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-gray-600 hover:text-neon-blue hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium uppercase tracking-wider"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+  });
+</script>

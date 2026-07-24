@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const articleSchema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "High-Quality 3D Signs in Zirakpur & Panchkula",
+    "author": { "@type": "Organization", "name": "Classic Printing" },
+    "publisher": { "@type": "Organization", "name": "Classic Printing" },
+    "datePublished": "2026-07-20"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://3dsign.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://3dsign.in/blog" },
+      { "@type": "ListItem", "position": 3, "name": "High-Quality 3D Signs in Zirakpur & Panchkula" }
+    ]
+  }
+]);
+---
+
+<Layout 
+  title="High-Quality 3D Signs in Zirakpur & Panchkula"
+  description="Upgrade your corporate office reception in Zirakpur and Panchkula with premium 3D sign boards and metallic letters from Classic Printing. Call 7976169388!"
+  schema={articleSchema}
+  canonicalPath="/blog/3d-signs-zirakpur-panchkula"
+>
+  {/* Hero Section */}
+  <section class="bg-[var(--color-light-surface)] pt-32 pb-20 border-b border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6">
+        High-Quality 3D Signs in <span class="text-neon-blue text-glow animate-flicker">Zirakpur & Panchkula</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-10">
+        Premium metallic and acrylic 3D lettering for corporate offices and luxury retail. Elevate your brand identity.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button href="tel:7976169388" variant="blue-solid">Call Now: 7976169388</Button>
+        <Button href="/contact" variant="secondary">Request a Quote</Button>
+      </div>
+    </div>
+  </section>
+
+  {/* Content */}
+  <section class="py-20 max-w-4xl mx-auto px-4">
+    <div class="prose prose-lg text-gray-600">
+      <p>
+        As business hubs like <strong>Zirakpur and Panchkula</strong> continue to expand rapidly, the competition for corporate prestige is at an all-time high. A flat, uninspired sign no longer cuts it. That's where high-quality 3D sign boards come in.
+      </p>
+      <h2>The Corporate Standard</h2>
+      <p>
+        3D signs offer depth, texture, and a premium feel that flat flex banners cannot match. For corporate offices, IT parks, and luxury showrooms in Panchkula and the fast-growing commercial sectors of Zirakpur, acrylic or steel 3D letters create a sense of permanence and professionalism.
+      </p>
+      <h2>Custom Solutions by Classic Printing</h2>
+      <p>
+        We design, manufacture, and securely install 3D letters tailored to your brand's typography and color scheme. Whether you need front-lit, back-lit, or solid metallic finishes, our team delivers impeccable quality.
+      </p>
+      <p>
+        Contact Classic Printing today to get a custom 3D sign board designed for your office in Zirakpur or Panchkula.
+      </p>
+    </div>
+  </section>
+</Layout>

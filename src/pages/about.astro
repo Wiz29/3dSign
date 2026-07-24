@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const aboutSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Classic Printing",
+  "url": "https://3dsign.in",
+  "logo": "https://3dsign.in/images/glow_sign.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+917976169388",
+    "contactType": "customer service",
+    "areaServed": ["Chandigarh", "Mohali", "Kharar", "Kurali", "Zirakpur", "Panchkula"]
+  }
+});
+---
+
+<Layout 
+  title="About Us - Sign Board Experts in Chandigarh Tricity"
+  description="Classic Printing is the trusted sign board maker in Chandigarh, Mohali, Panchkula, Zirakpur, Kharar & Kurali. Premium 3D signs, glow boards & flex printing."
+  schema={aboutSchema}
+  canonicalPath="/about"
+>
+  <div class="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-glow animate-flicker mb-4">About Classic Printing</h1>
+      <div class="h-1 w-24 bg-neon-blue mx-auto box-glow"></div>
+    </div>
+    
+    <div class="prose prose-lg mx-auto text-gray-600">
+      <p class="leading-relaxed mb-8">
+        At <strong class="text-gray-900">Classic Printing</strong>, we believe that your signage is the face of your business. Serving businesses across <strong>Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Kurali</strong>, we are dedicated to providing the highest quality glow sign boards, 3D signs, and printing services that make your brand impossible to ignore.
+      </p>
+      
+      <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Our Mission</h2>
+      <p class="leading-relaxed mb-8">
+        To illuminate brands through innovative, durable, and visually stunning signage solutions. We blend modern technology with classic craftsmanship to deliver products that stand the test of time and weather.
+      </p>
+      
+      <div class="bg-[var(--color-light-surface)] border border-gray-200 p-8 rounded-xl mt-12">
+        <h3 class="text-xl font-bold text-neon-pink mb-4">Why Choose Us?</h3>
+        <ul class="space-y-4 text-gray-600">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-neon-blue mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong class="text-gray-900">Premium Materials:</strong> We use only high-grade acrylics, LEDs, and flex materials ensuring longevity.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-neon-blue mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong class="text-gray-900">Expert Craftsmanship:</strong> Years of experience in designing and assembling complex 3D structures.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-neon-blue mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong class="text-gray-900">Timely Delivery:</strong> We understand business deadlines and always deliver on schedule.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>

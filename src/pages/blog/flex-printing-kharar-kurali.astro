@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const articleSchema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Affordable Flex Printing Services in Kharar & Kurali",
+    "author": { "@type": "Organization", "name": "Classic Printing" },
+    "publisher": { "@type": "Organization", "name": "Classic Printing" },
+    "datePublished": "2026-07-15"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://3dsign.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://3dsign.in/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Affordable Flex Printing Services in Kharar & Kurali" }
+    ]
+  }
+]);
+---
+
+<Layout 
+  title="Affordable Flex Printing Services in Kharar & Kurali"
+  description="Get high-resolution, durable flex banners and hoardings for your business in Kharar and Kurali. Fast turnaround by Classic Printing. Call 7976169388!"
+  schema={articleSchema}
+  canonicalPath="/blog/flex-printing-kharar-kurali"
+>
+  {/* Hero Section */}
+  <section class="bg-[var(--color-light-surface)] pt-32 pb-20 border-b border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6">
+        Affordable Flex Printing in <span class="text-neon-pink text-glow-pink animate-flicker-pink">Kharar & Kurali</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-10">
+        High-resolution banners, hoardings, and backdrops. Fast, reliable, and cost-effective printing solutions.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button href="tel:7976169388" variant="blue-solid">Call Now: 7976169388</Button>
+        <Button href="/contact" variant="secondary">Request a Quote</Button>
+      </div>
+    </div>
+  </section>
+
+  {/* Content */}
+  <section class="py-20 max-w-4xl mx-auto px-4">
+    <div class="prose prose-lg text-gray-600">
+      <p>
+        For fast-paced marketing and large-scale outdoor advertising in growing towns like <strong>Kharar and Kurali</strong>, flex printing remains the most versatile and cost-effective solution. From roadside hoardings to event banners, Classic Printing delivers crisp, high-resolution prints.
+      </p>
+      <h2>Durable and Weather-Resistant</h2>
+      <p>
+        Outdoor advertising faces harsh sunlight and heavy rains. We use premium flex materials and fade-resistant inks to ensure your message stays vibrant for months, making it perfect for real estate announcements, educational institutes, and local store promotions in Kharar and Kurali.
+      </p>
+      <h2>Fast Turnaround Times</h2>
+      <p>
+        We know that marketing campaigns often operate on tight deadlines. Our state-of-the-art printing facility ensures that we can handle bulk orders quickly without compromising on print quality.
+      </p>
+      <p>
+        Need a flex board printed and installed today? Call our local support team for immediate assistance.
+      </p>
+    </div>
+  </section>
+</Layout>

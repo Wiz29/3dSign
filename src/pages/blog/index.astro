@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+const blogs = [
+  {
+    title: "Best Sign Board Makers in Chandigarh & Mohali",
+    slug: "/blog/sign-board-makers-chandigarh-mohali",
+    excerpt: "Discover why local businesses trust us for their glow signs and 3D letters.",
+    date: "July 24, 2026"
+  },
+  {
+    title: "High-Quality 3D Signs in Zirakpur & Panchkula",
+    slug: "/blog/3d-signs-zirakpur-panchkula",
+    excerpt: "Upgrade your corporate office reception with our premium 3D sign boards.",
+    date: "July 20, 2026"
+  },
+  {
+    title: "Affordable Flex Printing Services in Kharar & Kurali",
+    slug: "/blog/flex-printing-kharar-kurali",
+    excerpt: "Get high-resolution, durable flex banners for your outdoor advertising needs.",
+    date: "July 15, 2026"
+  },
+  {
+    title: "Glow Sign Boards: Illuminating Businesses across Chandigarh Tricity",
+    slug: "/blog/glow-signs-tricity",
+    excerpt: "Learn how neon and LED glow signs can dramatically increase your footfall.",
+    date: "July 10, 2026"
+  }
+];
+---
+
+<Layout 
+  title="Sign Board Blog - Tips & Insights for Tricity Businesses"
+  description="Read our latest articles on sign boards, 3D letters, glow signs, and flex printing in Chandigarh, Mohali, Zirakpur, Kharar, Kurali & Panchkula."
+  canonicalPath="/blog"
+>
+  <div class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-glow animate-flicker mb-4">Our Blog</h1>
+      <div class="h-1 w-24 bg-neon-blue mx-auto box-glow"></div>
+      <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+        Insights, tips, and showcases of our signage work across the Tricity.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {blogs.map((blog) => (
+        <a href={blog.slug} class="bg-white p-8 rounded-xl border border-gray-200 hover:border-neon-blue hover:shadow-lg transition-all group block">
+          <p class="text-sm text-neon-pink font-semibold mb-3">{blog.date}</p>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-neon-blue transition-colors">{blog.title}</h2>
+          <p class="text-gray-600 mb-6">{blog.excerpt}</p>
+          <span class="text-neon-blue uppercase tracking-widest text-sm font-bold group-hover:text-gray-900 transition-colors">Read Article &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+@theme {
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --color-neon-blue: #00bfff;
+  --color-neon-pink: #ff1493;
+  --color-neon-purple: #9d00ff;
+  --color-light-bg: #ffffff;
+  --color-light-surface: #f9fafb;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-light-bg)] text-gray-900 font-sans antialiased selection:bg-neon-pink selection:text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 5px rgba(0, 191, 255, 0.4), 0 0 10px rgba(0, 191, 255, 0.3), 0 0 20px rgba(0, 191, 255, 0.2);
+  }
+  .text-glow-pink {
+    text-shadow: 0 0 5px rgba(255, 20, 147, 0.4), 0 0 10px rgba(255, 20, 147, 0.3), 0 0 20px rgba(255, 20, 147, 0.2);
+  }
+  .box-glow {
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.3), 0 0 20px rgba(0, 191, 255, 0.2);
+  }
+  
+  .halftone-bg {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  
+  .animate-flicker {
+    animation: flicker 4s infinite alternate;
+  }
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 5px rgba(0, 191, 255, 0.4), 0 0 10px rgba(0, 191, 255, 0.3), 0 0 20px rgba(0, 191, 255, 0.2);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+@keyframes flicker-pink {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 5px rgba(255, 20, 147, 0.4), 0 0 10px rgba(255, 20, 147, 0.3), 0 0 20px rgba(255, 20, 147, 0.2);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+.animate-flicker-pink {
+  animation: flicker-pink 3s infinite alternate-reverse;
+}

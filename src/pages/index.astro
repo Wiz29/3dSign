@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const schemas = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Classic Printing",
+    "image": "https://3dsign.in/images/glow_sign.png",
+    "telephone": "+917976169388",
+    "email": "rbishnoi.me@gmail.com",
+    "url": "https://3dsign.in",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chandigarh",
+      "addressRegion": "Chandigarh",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.7333,
+      "longitude": 76.7794
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Chandigarh" },
+      { "@type": "City", "name": "Mohali" },
+      { "@type": "City", "name": "Kharar" },
+      { "@type": "City", "name": "Kurali" },
+      { "@type": "City", "name": "Zirakpur" },
+      { "@type": "City", "name": "Panchkula" }
+    ],
+    "priceRange": "₹₹",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "sameAs": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Classic Printing",
+    "url": "https://3dsign.in"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What types of sign boards does Classic Printing make?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Classic Printing manufactures Glow Sign Boards (LED/Neon), 3D Sign Boards (Steel, Acrylic, Brass), Flex Sign Boards, and Acrylic Printing & Boards for businesses across Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Kurali."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which areas does Classic Printing serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We serve the entire Chandigarh Tricity region including Chandigarh, Mohali (SAS Nagar), Panchkula, Zirakpur, Kharar, and Kurali. We handle design, manufacturing, and on-site installation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I contact Classic Printing for a quote?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can call or WhatsApp us at 7976169388 or email rbishnoi.me@gmail.com. We provide free quotes for all signage projects."
+        }
+      }
+    ]
+  }
+]);
+---
+
+<Layout 
+  title="Sign Board Makers in Chandigarh, Mohali, Zirakpur"
+  description="Classic Printing - Premium glow sign boards, 3D signs, flex printing & acrylic boards in Chandigarh, Mohali, Zirakpur, Panchkula, Kharar & Kurali. Call 7976169388 for a free quote!"
+  schema={schemas}
+  canonicalPath="/"
+>
+  {/* Hero Section */}
+  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6">
+        We Make Your Brand <br class="hidden md:block"/>
+        <span class="text-neon-blue text-glow animate-flicker">Shine In The Tricity</span>
+      </h1>
+      <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+        Premium glow sign boards, 3D signs, and high-quality flex printing solutions across <strong>Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Kurali</strong>. Stand out with Classic Printing.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button href="tel:7976169388" variant="blue-solid">Call Now</Button>
+        <Button href="/catalog" variant="primary">View Our Work</Button>
+        <Button href="/contact" variant="secondary">Get A Quote</Button>
+      </div>
+    </div>
+    
+    {/* Decorative background element */}
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-blue/20 rounded-full blur-[120px] -z-10"></div>
+  </section>
+
+  {/* Services Teaser */}
+  <section class="py-20 bg-[var(--color-light-surface)]/50 border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-glow-pink animate-flicker-pink">Our Expertise</h2>
+        <div class="h-1 w-20 bg-neon-pink mx-auto mt-4 box-glow animate-flicker-pink"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { title: 'Glow Signs', desc: 'Eye-catching neon and LED glow signs that grab attention day or night.' },
+          { title: '3D Letters', desc: 'Premium metallic and acrylic 3D letters for a professional corporate look.' },
+          { title: 'Flex Printing', desc: 'High-resolution, durable flex prints for banners, hoardings, and backdrops.' }
+        ].map((service) => (
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-neon-blue transition-colors group">
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-neon-blue transition-colors">{service.title}</h3>
+            <p class="text-gray-600">{service.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/services" class="text-neon-pink hover:text-gray-900 transition-colors uppercase tracking-widest font-semibold text-sm">
+          Explore All Services &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ Section for AEO */}
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <div class="h-1 w-20 bg-neon-blue mx-auto mt-4 box-glow"></div>
+      </div>
+      
+      <div class="space-y-6">
+        <details class="bg-white p-6 rounded-xl border border-gray-200 group" open>
+          <summary class="text-lg font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+            What types of sign boards does Classic Printing make?
+            <svg class="w-5 h-5 text-neon-blue group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <p class="mt-4 text-gray-600">We manufacture <strong>Glow Sign Boards</strong> (LED/Neon), <strong>3D Sign Boards</strong> (Steel, Acrylic, Brass), <strong>Flex Sign Boards</strong>, and <strong>Acrylic Printing & Boards</strong> for businesses across Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Kurali.</p>
+        </details>
+        <details class="bg-white p-6 rounded-xl border border-gray-200 group">
+          <summary class="text-lg font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+            Which areas does Classic Printing serve?
+            <svg class="w-5 h-5 text-neon-blue group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <p class="mt-4 text-gray-600">We serve the entire <strong>Chandigarh Tricity region</strong> including Chandigarh, Mohali (SAS Nagar), Panchkula, Zirakpur, Kharar, and Kurali. We handle design, manufacturing, and on-site installation.</p>
+        </details>
+        <details class="bg-white p-6 rounded-xl border border-gray-200 group">
+          <summary class="text-lg font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+            How can I contact Classic Printing for a quote?
+            <svg class="w-5 h-5 text-neon-blue group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <p class="mt-4 text-gray-600">You can call or WhatsApp us at <a href="tel:7976169388" class="text-neon-blue hover:underline font-semibold">7976169388</a> or email <a href="mailto:rbishnoi.me@gmail.com" class="text-neon-blue hover:underline font-semibold">rbishnoi.me@gmail.com</a>. We provide free quotes for all signage projects.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <section class="py-24 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">Ready to upgrade your signage?</h2>
+      <p class="text-xl text-gray-600 mb-10">Contact us today to discuss your requirements and get a free quote.</p>
+      <div class="flex justify-center items-center gap-6">
+        <a href="tel:7976169388" class="text-2xl font-bold text-neon-blue text-glow animate-flicker hover:text-gray-900 transition-colors">
+          Call: 7976169388
+        </a>
+        <span class="text-gray-500">or</span>
+        <Button href="/contact" variant="primary">Message Us</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
