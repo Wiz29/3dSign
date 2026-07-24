@@ -1,54 +1,54 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 
-const catalogItems = [
-  { title: 'Neon Glow Sign', image: '/images/glow_sign.png', category: 'Glow Signs' },
-  { title: 'Corporate 3D Letters', image: '/images/3d_sign.png', category: '3D Signs' },
-  { title: 'Outdoor Flex Banner', image: '/images/flex_sign.png', category: 'Flex Printing' },
-  { title: 'Acrylic Office Board', image: '/images/acrylic_board.png', category: 'Acrylic Boards' },
-];
+const catalogEntries = await getCollection('catalog');
+// Sort by order, then by category
+catalogEntries.sort((a, b) => a.data.order - b.data.order);
 
 const catalogSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ImageGallery",
   "name": "Classic Printing - Sign Board Portfolio",
   "about": "Sign boards, 3D signs, glow signs, and flex printing projects across Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Kurali",
-  "image": catalogItems.map(item => ({
+  "image": catalogEntries.map(item => ({
     "@type": "ImageObject",
-    "name": item.title,
-    "contentUrl": `https://3dsign.in${item.image}`
+    "name": item.data.title,
+    "contentUrl": `https://3dsign.in${item.data.image}`
   }))
 });
 ---
 
 <Layout 
-  title="Sign Board Portfolio & Gallery"
-  description="Browse our portfolio of neon glow signs, corporate 3D letters, and flex banners installed across Chandigarh, Mohali, Zirakpur & Panchkula."
+  title="Sign Board Portfolio & Catalog | Classic Printing"
+  description="Browse our complete catalog of 25+ signage solutions including 3D letters, glow signs, flex printing, and name plates across the Tricity."
   schema={catalogSchema}
   canonicalPath="/catalog"
 >
   <div class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-glow animate-flicker mb-4">Our Catalog</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 text-glow animate-flicker mb-4">Our Complete Catalog</h1>
       <div class="h-1 w-24 bg-neon-blue mx-auto box-glow"></div>
-      <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-        Browse some of our latest premium installations and printing projects.
+      <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+        From premium 3D letters for corporate offices to massive flex hoardings for highway advertising, explore our full range of manufacturing capabilities.
       </p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-      {catalogItems.map((item) => (
-        <div class="group relative rounded-xl overflow-hidden bg-[var(--color-light-surface)] border border-gray-200 hover:border-neon-blue transition-colors shadow-sm">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {catalogEntries.map((item) => (
+        <a href={`/catalog/${item.id}`} class="group relative rounded-xl overflow-hidden bg-[var(--color-light-surface)] border border-gray-200 hover:border-neon-blue transition-colors shadow-sm block">
           <div class="aspect-w-16 aspect-h-10 w-full overflow-hidden">
-            <img src={item.image} alt={item.title} class="w-full h-[400px] object-cover transform group-hover:scale-110 transition-transform duration-700" />
+            <img src={item.data.image} alt={item.data.title} class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
           </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-          <div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform">
-            <span class="text-neon-pink text-sm font-bold uppercase tracking-wider mb-2 block">{item.category}</span>
-            <h3 class="text-2xl font-bold text-white">{item.title}</h3>
+          <div class="absolute top-0 right-0 p-4 z-10">
+            <span class="bg-black/80 backdrop-blur text-neon-pink text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">{item.data.category}</span>
           </div>
-        </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 group-hover:text-neon-blue transition-colors mb-2">{item.data.title}</h3>
+            <p class="text-gray-600 text-sm line-clamp-2">{item.data.description}</p>
+          </div>
+        </a>
       ))}
     </div>
     

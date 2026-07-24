@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+
+export async function getStaticPaths() {
+  const catalogEntries = await getCollection('catalog');
+  return catalogEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const productSchema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": entry.data.title,
+    "description": entry.data.description,
+    "image": `https://3dsign.in${entry.data.image}`,
+    "brand": { "@type": "Organization", "name": "Classic Printing" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "offerCount": "1",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Chandigarh", "Mohali", "Panchkula", "Zirakpur", "Kharar", "Kurali"]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://3dsign.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://3dsign.in/catalog" },
+      { "@type": "ListItem", "position": 3, "name": entry.data.title }
+    ]
+  }
+]);
+---
+
+<Layout 
+  title={`${entry.data.title} in Chandigarh Tricity | Classic Printing`}
+  description={entry.data.description}
+  schema={productSchema}
+  canonicalPath={`/catalog/${entry.id}`}
+  keywords={entry.data.seoKeywords}
+>
+  <div class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+      
+      {/* Product Image */}
+      <div class="rounded-2xl overflow-hidden bg-[var(--color-light-surface)] border border-gray-200 shadow-sm sticky top-32">
+        <div class="aspect-w-4 aspect-h-3">
+          <img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
+        </div>
+        <div class="p-8 border-t border-gray-200 bg-white">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Request a Custom Quote</h2>
+          <p class="text-gray-600 mb-6">Need this for your business in the Tricity area? Call us for immediate pricing and installation timelines.</p>
+          <div class="space-y-4">
+            <Button href="tel:7976169388" variant="blue-solid" class="w-full text-center block">Call: 7976169388</Button>
+            <Button href="https://wa.me/917976169388" variant="primary" class="w-full text-center block bg-green-500 hover:bg-green-600 border-green-500 shadow-none">WhatsApp Us</Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Product Content */}
+      <div>
+        <span class="text-neon-pink font-bold uppercase tracking-wider text-sm mb-3 block">{entry.data.category}</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
+          {entry.data.title}
+        </h1>
+        
+        <div class="prose prose-lg text-gray-600 prose-headings:text-gray-900 prose-a:text-neon-blue max-w-none">
+          <Content />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>
