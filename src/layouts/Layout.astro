@@ -37,6 +37,17 @@ const fullTitle = `${title} | Classic Printing - Sign Board Makers in Chandigarh
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8L82TMZB2"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H8L82TMZB2');
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -86,5 +97,41 @@ const fullTitle = `${title} | Classic Printing - Sign Board Makers in Chandigarh
 			<slot />
 		</main>
 		<Footer />
+    
+    <script is:inline>
+      function setupTracking() {
+        const trackElements = document.querySelectorAll('.track-click:not([data-tracked="true"]), a[href^="tel:"]:not([data-tracked="true"]), a[href^="mailto:"]:not([data-tracked="true"]), a[href^="https://wa.me"]:not([data-tracked="true"])');
+        
+        trackElements.forEach(el => {
+          el.setAttribute('data-tracked', 'true');
+          el.addEventListener('click', (e) => {
+            if (typeof window.gtag === 'function') {
+              let category = 'Button';
+              let label = e.currentTarget.innerText.trim() || 'Unknown';
+
+              if (e.currentTarget.href) {
+                if (e.currentTarget.href.includes('tel:')) category = 'Phone Call';
+                else if (e.currentTarget.href.includes('wa.me')) category = 'WhatsApp';
+                else if (e.currentTarget.href.includes('mailto:')) category = 'Email';
+                else category = 'CTA Link';
+              }
+
+              category = e.currentTarget.dataset.category || category;
+              label = e.currentTarget.dataset.label || label;
+              
+              window.gtag('event', 'click', {
+                event_category: category,
+                event_label: label,
+                page_path: window.location.pathname
+              });
+            }
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', setupTracking);
+      // Re-run if Astro View Transitions is added later
+      document.addEventListener('astro:page-load', setupTracking);
+    </script>
 	</body>
 </html>

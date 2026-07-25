@@ -7,7 +7,7 @@ interface Props {
 
 const { href, variant = 'primary', class: className = '' } = Astro.props;
 
-const baseClasses = "inline-flex items-center justify-center px-6 py-3 font-heading font-medium rounded-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wider";
+const baseClasses = "track-click inline-flex items-center justify-center px-6 py-3 font-heading font-medium rounded-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wider";
 const variantClasses = {
   primary: "bg-neon-pink text-white box-glow hover:bg-white hover:text-neon-pink border border-transparent hover:border-neon-pink",
   secondary: "bg-transparent border border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-white text-glow hover:box-glow",
